@@ -1,0 +1,37 @@
+注意BICQ的URL路径，改成你自己的。
+
+第一步，在页面加入：
+<script language="JavaScript" type="text/javascript" src="http://localhost/bicq2/bicq.php"></script>
+
+第二部，在页面加入：
+<a href="#" onClick="GuestSendMessage(10000);"><img id="BICQ_Guest_10000" src="http://localhost/bicq2/images/face/1-0.gif" width="20" height="20" border="0" align="absmiddle">点击这里与[<span id="BICQ_GuestName_10000">10000</span>]对话</a><br />
+<a href="#" onClick="GuestSendMessage(10001);"><img id="BICQ_Guest_10001" src="http://localhost/bicq2/images/face/1-0.gif" width="20" height="20" border="0" align="absmiddle">点击这里与[<span id="BICQ_GuestName_10001">10001</span>]对话</a><br />
+<script language="JavaScript" type="text/javascript">
+GuestGetMembersOnlineArr("10000,10001");/* 要支持的帐号，用逗号隔开 */
+function GuestSetMembersOlStatus(IDS) {
+	var sObj=IDS.split("||");
+	for (var i=0;i<sObj.length;i++) {
+		if (sObj[i]!="") {
+			/*
+			将用户头像记录到数组
+			格式：GuestMembersOlArr['_UID']=头像序号;
+			例如：GuestMembersOlArr['_10000']的值为ID10000的头像号码。
+			*/
+			var xObj=sObj[i].split("|");
+			var UID=xObj[0];
+			var Face=xObj[1];
+			var Status=xObj[2];
+			var Petname=xObj[3];
+			GuestMembersOlArr['_'+UID]=Face;
+
+			/* 设置用户在线头像 */
+			var imgObj=document.getElementById("BICQ_Guest_"+UID);
+			if (imgObj) imgObj.src="http://localhost/bicq2/images/face/"+Face+"-1.gif";
+
+			/* 设置用户昵称 */
+			var nameObj=document.getElementById("BICQ_GuestName_"+UID);
+			if (nameObj) nameObj.innerHTML=Petname;
+		}
+	}
+}
+</script>
