@@ -69,23 +69,39 @@
           </p>
           
           <div class="row">
-            <div class="col-8 col-sm-8 col-lg-6" style="color:#fff">
+            <div style="color:#fff">
               <h2></h2>
-              <form role="form">
-                <div class="row">
-                  <label for="exampleInputEmail1">标题</label>
+              <form role="form" action="newblog" method="post">
+                <div class="row" >
+                  <div class="col-1 col-sm-1 col-lg-1">
+                    <label for="exampleInputEmail1">标题</label>
+                  </div>
+                  <div class="col-offset-4 col-sm-offset-4 col-lg-offset-4 col-1 col-sm-1 col-lg-1">
+                    <label >(0/49)</label>
+                  </div>
+                </div>
+                <div class="row" style="margin-bottom:15px">
+                  <div class="col-8 col-sm-8 col-lg-6">
+                    <input name="title" type="text" class="form-control" id="exampleInputEmail1" placeholder="请输入标题">
+                  </div>
                 </div>
                 <div class="row">
-                  <input type="email" class="form-control" id="exampleInputEmail1" placeholder="请输入标题">
+                  <div class="col-1 col-sm-1 col-lg-1">
+                    <label for="exampleInputPassword1">内容</label>
+                  </div>
+                  <div class="col-offset-6 col-sm-offset-6 col-lg-offset-6col-1 col-sm-1 col-lg-1">
+                    <label >(0/5000)</label>
+                  </div>
+                </div>
+                <div class="row" style="margin-bottom:15px">
+                  <div class="col-10 col-sm-10 col-lg-8">
+                    <textarea  name="content" class="form-control" id="exampleInputPassword1" rows="15" placeholder="请输入内容"></textarea>
+                  </div>
                 </div>
                 <div class="row">
-                  <label for="exampleInputPassword1">内容</label>
-                </div>
-                <div class="row">
-                  <textarea   class="form-control" id="exampleInputPassword1" rows="5" placeholder="请输入内容"></textarea>
-                </div>
-                <div class="row">             
-                  <button type="submit" class="btn btn-default">Submit</button>
+                  <div class="col-offset-9 col-sm-offset-9 col-lg-offset-7 col-1 col-sm-1 col-lg-1">             
+                    <button type="submit" class="btn btn-default">提交</button>
+                  </div>
                 </div>
               </form>
             </div><!--/span-->

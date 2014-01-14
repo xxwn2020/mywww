@@ -23,7 +23,34 @@ class Blogs extends CI_Controller {
 	}
 	public function newblog()
 	{
-		$this->load->view('newblog');
+		if($newBlog=$this->isPost())
+		{
+			//print_r($temp);
+			//$this->load->view('welcome_message');
+			$this->load->model('Blog');
+			$this->Blog->insert_blog($newBlog);
+			$this->load->view('welcome_message');
+		}
+		else
+			$this->load->view('newblog');
+
+	}
+	private function isPost()
+	{
+		if(!empty($_POST))
+		{
+			$arrTemp=array();
+
+			foreach($_POST as $key => $value)
+			{
+				$arrTemp[$key]=$value;
+			}
+			return $arrTemp;
+		}
+		else
+		{
+			return 0;
+		}
 	}
 }
 

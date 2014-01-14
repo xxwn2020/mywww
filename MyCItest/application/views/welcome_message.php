@@ -83,6 +83,6 @@
 
 	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds</p>
 </div>
-
+<a href="newblog">返回</>
 </body>
 </html>
