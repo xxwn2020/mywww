@@ -19,10 +19,15 @@ class Blogs extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('index');
+		$this->output->enable_profiler(TRUE);
+		$this->load->model('Blog');
+		$blogs=$this->Blog->get_blogs(0,10);
+		$date['bloglists']=$blogs;
+		$this->load->view('index',$date);
 	}
 	public function newblog()
 	{
+		$this->output->enable_profiler(TRUE);
 		if($newBlog=$this->isPost())
 		{
 			//print_r($temp);

@@ -55,7 +55,7 @@
 
          <div class="col-xs-6 col-sm-2 sidebar-offcanvas" id="sidebar" role="navigation">
           <div class="list-group" >
-            <a href="#" style="border-top-color: #080808;border-width:1px 0 0 0;background-color:#262626;color:#ff7f00" class="list-group-item ">首页</a>
+            <a href="#" style="border-top-color: #983F2E;border-width:1px 0 0 0;background-color:#262626;color:#ff7f00" class="list-group-item ">首页</a>
             <a href="#" style="border-top-color: #080808;border-width:1px 0 0 0;background-color:#222" class="list-group-item">Link</a>
             <a href="#" style="border-top-color: #080808;border-width:1px 0 0 0;background-color:#222" class="list-group-item">Link</a>
             <a href="#" style="border-top-color: #080808;border-width:1px 0 0 0;background-color:#222" class="list-group-item">Link</a>
@@ -68,38 +68,29 @@
             <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
           </p>
           
-          <div class="row">
-            <div class="col-6 col-sm-6 col-lg-4">
-              <h2>Heading</h2>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
-            </div><!--/span-->
-            <div class="col-6 col-sm-6 col-lg-4">
-              <h2>Heading</h2>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
-            </div><!--/span-->
-            <div class="col-6 col-sm-6 col-lg-4">
-              <h2>Heading</h2>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
-            </div><!--/span-->
-            <div class="col-6 col-sm-6 col-lg-4">
-              <h2>Heading</h2>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
-            </div><!--/span-->
-            <div class="col-6 col-sm-6 col-lg-4">
-              <h2>Heading</h2>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
-            </div><!--/span-->
-            <div class="col-6 col-sm-6 col-lg-4">
-              <h2>Heading</h2>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
-            </div><!--/span-->
-          </div><!--/row-->
+          <?php
+            foreach ($bloglists as $blog) 
+            {
+          ?>
+              <div  class="row">
+                <div class="col-12 col-sm-12 col-lg-12">
+                  <h2 style="color:#7B7B7B"><?php echo $blog->title; ?></h2>
+                  <p style="color:#7B7B7B"><?php echo $blog->content;?></p>                
+                </div><!--/span-->
+              </div>
+              <div style="background-color:#262626;" class="row">
+                <div class="col-5 col-sm-5 col-lg-9" >
+                  <p style="color:#7B7B7B"><?php echo date("Y-m-d H:i:s",$blog->createTime); ?></p>
+                </div><!--/span-->
+                <div class="col-5 col-sm-5 col-lg-3">
+                  <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
+                </div><!--/span-->                
+              </div><!--/row-->
+          <?php
+            }
+            
+          ?> 
+          
         </div><!--/span-->
 
 
