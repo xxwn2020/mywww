@@ -6,7 +6,7 @@
  *
  * @package		CodeIgniter
  * @author		ExpressionEngine Dev Team
- * @copyright	Copyright (c) 2006 - 2012 EllisLab, Inc.
+ * @copyright	Copyright (c) 2006 - 2011 EllisLab, Inc.
  * @license		http://codeigniter.com/user_guide/license.html
  * @link		http://codeigniter.com
  * @since		Version 2.0
@@ -62,7 +62,7 @@ class CI_Cache_file extends CI_Driver {
 		
 		if (time() >  $data['time'] + $data['ttl'])
 		{
-			unlink($this->_cache_path.$id);
+			@unlink($this->_cache_path.$id);
 			return FALSE;
 		}
 		
@@ -100,6 +100,22 @@ class CI_Cache_file extends CI_Driver {
 	// ------------------------------------------------------------------------
 
 	/**
+	 * Replace the cache
+	 *
+	 * @param 	string		unique key
+	 * @param 	mixed		data to store
+	 * @param 	int			length of time (in seconds) the cache is valid 
+	 *						- Default is 60 seconds
+	 * @return 	boolean		true on success/false on failure
+	 */
+	public function replace($id, $data, $ttl = 60)
+	{
+		return $this->save($id, $data, $ttl);
+	}
+
+	// ------------------------------------------------------------------------
+
+	/**
 	 * Delete from Cache
 	 *
 	 * @param 	mixed		unique identifier of item in cache
@@ -107,7 +123,7 @@ class CI_Cache_file extends CI_Driver {
 	 */
 	public function delete($id)
 	{
-		return unlink($this->_cache_path.$id);
+		return @unlink($this->_cache_path.$id);
 	}
 
 	// ------------------------------------------------------------------------
@@ -151,12 +167,13 @@ class CI_Cache_file extends CI_Driver {
 		{
 			return FALSE;
 		}
-
-		$data = read_file($this->_cache_path.$id);
+		
+		$data = read_file($this->_cache_path.$id);		
 		$data = unserialize($data);
-
+		
 		if (is_array($data))
 		{
+			$data = $data['data'];
 			$mtime = filemtime($this->_cache_path.$id);
 
 			if ( ! isset($data['ttl']))
@@ -165,11 +182,11 @@ class CI_Cache_file extends CI_Driver {
 			}
 
 			return array(
-				'expire'	=> $mtime + $data['ttl'],
+				'expire' 	=> $mtime + $data['ttl'],
 				'mtime'		=> $mtime
 			);
 		}
-
+		
 		return FALSE;
 	}
 

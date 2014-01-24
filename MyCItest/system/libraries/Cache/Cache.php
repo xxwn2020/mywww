@@ -6,7 +6,7 @@
  *
  * @package		CodeIgniter
  * @author		ExpressionEngine Dev Team
- * @copyright	Copyright (c) 2006 - 2012 EllisLab, Inc.
+ * @copyright	Copyright (c) 2006 - 2011 EllisLab, Inc.
  * @license		http://codeigniter.com/user_guide/license.html
  * @link		http://codeigniter.com
  * @since		Version 2.0
@@ -27,7 +27,7 @@
 class CI_Cache extends CI_Driver_Library {
 	
 	protected $valid_drivers 	= array(
-		'cache_apc', 'cache_file', 'cache_memcached', 'cache_dummy'
+		'cache_apc', 'cache_file', 'cache_memcached', 'cache_memcache', 'cache_dummy'
 	);
 
 	protected $_cache_path		= NULL;		// Path of cache files (if file-based cache)
@@ -79,6 +79,22 @@ class CI_Cache extends CI_Driver_Library {
 	public function save($id, $data, $ttl = 60)
 	{
 		return $this->{$this->_adapter}->save($id, $data, $ttl);
+	}
+
+	// ------------------------------------------------------------------------
+
+	/**
+	 * Cache Replace
+	 *
+	 * @param 	string		Unique Key
+	 * @param 	mixed		Data to store
+	 * @param 	int			Length of time (in seconds) to cache the data
+	 *
+	 * @return 	boolean		true on success/false on failure
+	 */
+	public function replace($id, $data, $ttl = 60)
+	{
+		return $this->{$this->_adapter}->replace($id, $data, $ttl);
 	}
 
 	// ------------------------------------------------------------------------
@@ -165,6 +181,11 @@ class CI_Cache extends CI_Driver_Library {
 			{
 				$this->_backup_driver = $config['backup'];
 			}
+		}
+		
+		if( ! $this->{$this->_adapter}->is_supported())
+		{
+			$this->_adapter = $this->_backup_driver;
 		}
 	}
 

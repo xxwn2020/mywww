@@ -44,6 +44,8 @@
             <li class="active"><a href="#">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
+            <li><a href="">Sin in</a></li>
+            <li><a href="">Sin up for AbZone</a></li>
           </ul>
         </div><!-- /.nav-collapse -->
       </div><!-- /.container -->

@@ -1,8 +1,8 @@
 <?php
 $host="localhost:3306";//mysql数据库服务器,比如localhost:3306
 $user="root"; //mysql数据库默认用户名
-$pwd=""; //mysql数据库默认密码
-$db="sns"; //默认数据库名
+$pwd="123456"; //mysql数据库默认密码
+$db="iwebsns"; //默认数据库名
 global $tablePreStr;//设置外部变量
 $tablePreStr="isns_";//表前缀
 

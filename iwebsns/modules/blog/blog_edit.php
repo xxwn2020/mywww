@@ -68,7 +68,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title></title>
 <base href='<?php echo $siteDomain;?>' />
-<?php $plugins=unserialize('a:1:{s:15:"blog_add_bottom";a:1:{i:0;a:10:{i:0;s:1:"1";s:2:"id";s:1:"1";i:1;s:14:"article_widget";s:4:"name";s:14:"article_widget";i:2;s:15:"blog_add_bottom";s:9:"layout_id";s:15:"blog_add_bottom";i:3;s:19:"article_blogCon.php";s:3:"url";s:19:"article_blogCon.php";i:4;N;s:8:"sequence";N;}}}');?>
+<?php $plugins=unserialize('a:0:{}');?>
 <link rel="stylesheet" type="text/css" href="skin/<?php echo $skinUrl;?>/css/iframe.css">
 <link rel="stylesheet" type="text/css" href="servtools/menu_pop/menu_pop.css">
 <script type='text/javascript' src='servtools/ajax_client/ajax.js'></script>

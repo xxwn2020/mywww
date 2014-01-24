@@ -18,7 +18,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title><?php echo $user_name;?>的个人首页-<?php echo $siteName;?></title>
 <base href='<?php echo $siteDomain;?>' />
-<?php $plugins=unserialize('a:1:{s:14:"main_left_MENU";a:1:{i:0;a:10:{i:0;s:1:"2";s:2:"id";s:1:"2";i:1;s:14:"article_widget";s:4:"name";s:14:"article_widget";i:2;s:14:"main_left_MENU";s:9:"layout_id";s:14:"main_left_MENU";i:3;s:16:"article_menu.php";s:3:"url";s:16:"article_menu.php";i:4;N;s:8:"sequence";N;}}}');?>
+<?php $plugins=unserialize('a:0:{}');?>
 <link rel="stylesheet" type="text/css" href="skin/<?php echo $skinUrl;?>/css/layout.css">
 <script type="text/javascript" src="skin/default/js/jy.js"></script>
 <script type="text/javascript" src="skin/default/js/jooyea.js"></script>

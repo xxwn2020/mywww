@@ -6,34 +6,34 @@
  *
  * @package		CodeIgniter
  * @author		ExpressionEngine Dev Team
- * @copyright	Copyright (c) 2006 - 2012 EllisLab, Inc.
+ * @copyright	Copyright (c) 2006 - 2011 EllisLab, Inc.
  * @license		http://codeigniter.com/user_guide/license.html
  * @link		http://codeigniter.com
  * @since		Version 2.0
- * @filesource	
+ * @filesource
  */
 
 // ------------------------------------------------------------------------
 
 /**
- * CodeIgniter APC Caching Class 
+ * CodeIgniter APC Caching Class
  *
  * @package		CodeIgniter
  * @subpackage	Libraries
  * @category	Core
  * @author		ExpressionEngine Dev Team
- * @link		
+ * @link
  */
 
 class CI_Cache_apc extends CI_Driver {
 
 	/**
-	 * Get 
+	 * Get
 	 *
-	 * Look for a value in the cache.  If it exists, return the data 
+	 * Look for a value in the cache.	If it exists, return the data
 	 * if not, return FALSE
 	 *
-	 * @param 	string	
+	 * @param 	string
 	 * @return 	mixed		value that is stored/FALSE on failure
 	 */
 	public function get($id)
@@ -43,8 +43,8 @@ class CI_Cache_apc extends CI_Driver {
 		return (is_array($data)) ? $data[0] : FALSE;
 	}
 
-	// ------------------------------------------------------------------------	
-	
+	// ------------------------------------------------------------------------
+
 	/**
 	 * Cache Save
 	 *
@@ -58,7 +58,7 @@ class CI_Cache_apc extends CI_Driver {
 	{
 		return apc_store($id, array($data, time(), $ttl), $ttl);
 	}
-	
+
 	// ------------------------------------------------------------------------
 
 	/**
@@ -70,6 +70,22 @@ class CI_Cache_apc extends CI_Driver {
 	public function delete($id)
 	{
 		return apc_delete($id);
+	}
+
+	// ------------------------------------------------------------------------
+
+	/**
+	 * Replace the cache
+	 *
+	 * @param 	string		unique key
+	 * @param 	mixed		data to store
+	 * @param 	int			length of time (in seconds) the cache is valid
+	 *						- Default is 60 seconds
+	 * @return 	boolean		true on success/false on failure
+	 */
+	public function replace($id, $data, $ttl = 60)
+	{
+		return $this->save($id, $data, $ttl);
 	}
 
 	// ------------------------------------------------------------------------
@@ -90,7 +106,7 @@ class CI_Cache_apc extends CI_Driver {
 	 * Cache Info
 	 *
 	 * @param 	string		user/filehits
-	 * @return 	mixed		array on success, false on failure	
+	 * @return 	mixed		array on success, false on failure
 	 */
 	 public function cache_info($type = NULL)
 	 {
@@ -137,13 +153,11 @@ class CI_Cache_apc extends CI_Driver {
 			log_message('error', 'The APC PHP extension must be loaded to use APC Cache.');
 			return FALSE;
 		}
-		
+
 		return TRUE;
 	}
 
 	// ------------------------------------------------------------------------
-
-	
 }
 // End Class
 
