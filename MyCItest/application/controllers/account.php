@@ -127,7 +127,7 @@ class Account extends CI_Controller {
 		$this->_load_validation_rules();
 		if ($this->form_validation->run() == FALSE)
 	  	{
-	   		$this->load->view('regist');
+	   		$this->load->view('register');
 	  	}
 	  	else
 	  	{
@@ -168,7 +168,7 @@ class Account extends CI_Controller {
 
 		if ($this->form_validation->run() == FALSE)
 	  	{
-	   		$this->load->view('sin_in');
+	   		$this->load->view('login');
 	  	}
 	  	else
 	  	{

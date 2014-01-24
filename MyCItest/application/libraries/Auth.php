@@ -77,7 +77,7 @@ class Auth
         /** 获取CI句柄 */
 		$this->_CI = & get_instance();
 
-		$this->_CI->load->model('users_mdl');
+		$this->_CI->load->model('user','user_mdl');
 		$this->_CI->load->library('session');//加载表单验证函数
 		
 		$this->_user = unserialize($this->_CI->session->userdata('user'));
@@ -102,13 +102,13 @@ class Auth
 		{
 			if(!empty($this->_user) && NULL !== $this->_user['uid'])
 			{
-				$user = $this->_CI->users_mdl->get_user_by_id($this->_user['uid']);
+				$user = $this->_CI->user_mdl->get_user_by_id($this->_user['uid']);
 				
 				if($user && $user['token'] == $this->_user['token'])
 				{
 					$user['activated'] = time();
 					
-					$this->_CI->users_mdl->update_user($this->_user['uid'],$user);
+					$this->_CI->user_mdl->update_user($this->_user['uid'],$user);
 					
 					return ($this->_hasLogin = TRUE);
 				}
@@ -176,7 +176,7 @@ class Auth
 		/** 每登陆一次更新一次token */
 		$this->_user['token'] = sha1(now().rand());
 		
-		if($this->_CI->users_mdl->update_user($this->_user['uid'],$this->_user))
+		if($this->_CI->user_mdl->update_user($this->_user['uid'],$this->_user))
 		{
 			/** 设置session */
 			$this->_set_session();

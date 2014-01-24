@@ -28,7 +28,7 @@
  * @author		Saturn <ab396887725@gmail.com>
  * @link		
  */
-class Users extends CI_Model {
+class User extends CI_Model {
 
 	const TBL_USERS = 'ab_user';
 	
