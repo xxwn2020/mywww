@@ -49,7 +49,7 @@ class User extends CI_Model {
     public function __construct()
     {
        parent::__construct();
-	   
+	   $this->load->database();
 	   log_message('debug', "Users Model Class Initialized");
     }
 	
@@ -109,6 +109,7 @@ class User extends CI_Model {
     */	
 	public function add_user($data)
 	{
+		$this->load->library('common');
 		$data['password'] = Common::do_hash($data['password']);
 		
 		$this->db->insert(self::TBL_USERS, $data);
@@ -147,11 +148,13 @@ class User extends CI_Model {
 	* @param int - $exclude_uid 需要排除的uid
     * @return boolean - success/failure
     */	
-	public function check_exist($key = 'mail',$value = '')
+	public function check_exist($key = 'userName',$value = '')
 	{
 		if(in_array($key, $this->_unique_key) && !empty($value))
 		{
 			//fix issue 2
+			//echo $key.$value.self::TBL_USERS;
+
 			$this->db->select('uid')->from(self::TBL_USERS)->where($key, $value);
 			
 			/*if(!empty($exclude_uid) && is_numeric($exclude_uid))

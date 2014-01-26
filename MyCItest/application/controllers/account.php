@@ -53,7 +53,7 @@ class Account extends CI_Controller {
 	{
 		$ref = $this->input->get('ref', TRUE);
 		
-		$this->referrer = (!empty($ref)) ? $ref : '/blogs/';
+		$this->referrer = (!empty($ref)) ? $ref : '/blogs/index';
 	}
 
 	/**
@@ -64,29 +64,31 @@ class Account extends CI_Controller {
      */
 	private function _load_validation_rules()
 	{
-		$this->form_validation->set_rules('username', '用户名', 'required|trim|alpha_numeric|callback__email_check|strip_tags');
-		$this->form_validation->set_rules('password', '新的密码', 'required|min_length[6]|trim|matches[confirm]');
-		$this->form_validation->set_rules('confirm', '确认的密码', 'required|min_length[6]|trim');
-		$this->form_validation->set_rules('screenName', '昵称', 'trim|callback__screenName_check|strip_tags');
+		$this->form_validation->set_rules('userName', '用户名', 'required|trim|callback__username_check|strip_tags');
+		$this->form_validation->set_rules('password', 'Password', 'required|min_length[5]|matches[confirm]');
+		$this->form_validation->set_rules('confirm', 'Password Confirmation', 'required|min_length[5]');
+		
+		$this->form_validation->set_rules('screenName', '昵称', 'required|trim|callback__screenName_check|strip_tags');
+		$this->form_validation->set_message('required', '%s不能为空');
+		$this->form_validation->set_message('min_length', '%s不能少于%s 位');
 		//$this->form_validation->set_rules('group', '用户组', 'trim');
 	}
 	
 	 /**
-     * 回调函数：检查Email是否唯一
+     * 回调函数：检查用户名是否唯一
      * 
      * @access 	public
      * @param 	$str 输入值
      * @return 	bool
      */
-	public function _email_check($str)
+	public function _username_check($str)
 	{
-		if($this->user_mdl->check_exist('mail', $str))
+		if($this->user_mdl->check_exist('userName', $str))
 		{
 			$this->form_validation->set_message('_email_check', '系统已经存在一个为 '.$str.' 的邮箱');
 			
 			return FALSE;
 		}
-			
 		return TRUE;
 	}
 	
@@ -117,6 +119,7 @@ class Account extends CI_Controller {
      */
 	public function register()
 	{
+		$this->load->helper('url');
 		$this->_data['page_title'] = '注册';
 
 		if($this->auth->hasLogin())
@@ -133,20 +136,19 @@ class Account extends CI_Controller {
 	  	{
 	  		$this->user_mdl->add_user(
 				array(
-					'name' 		=>	$this->input->post('uname',TRUE),
+					'username' 	=>	$this->input->post('userName',TRUE),
 					'password' 	=>	$this->input->post('password',TRUE),
-					'mail'		=>	$this->input->post('mail',TRUE),
-					'url'		=>	$this->input->post('url',TRUE),
-					'screenName'=>	($this->input->post('screenName'))?$this->input->post('screenName',TRUE):$this->input->post('uname',TRUE),
+					'screenName'=>	$this->input->post('screenName',TRUE),					
 					'created'	=>	time(),
 					'activated'	=>	0,
-					'logged'	=>	0,
-					'group'		=>	$this->input->post('group',TRUE)
+					'logged'	=>	0
 				)
 			);
 			
 			$this->session->set_flashdata('success', '成功添加一个用户账号');
-			go_back();
+			echo $this->referrer;
+			redirect($this->referrer);
+			//go_back();
 	  	}
 	}
 
