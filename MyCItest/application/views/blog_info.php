@@ -65,34 +65,25 @@
         </div><!--/span-->
 
         <div class="col-xs-12 col-sm-10">
-          <p class="pull-right visible-xs">
-            <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
-          </p>
+          <div class="row">
+            <div class="col-12 col-sm-12 col-lg-12" >
+              <h2 style="color:#7B7B7B;border-bottom-color: #983F2E;border-width:0 0 1px 0;border-style:solid;">
+                <?php
+                  echo $blog['title'];
+                  //print_r($blog[0]);
+                ?>
+              </h2>
+            </div>            
+          </div>
+          <div class="row">
+            <div class="col-12 col-sm-12 col-lg-12" style="color:#7B7B7B">
+              <?php
+                echo $blog['content'];
+              ?>
+            </div> 
+          </div>
           
-          <?php
-            foreach ($bloglists as $blog) 
-            {
-          ?>
-              <div  class="row">
-                <div class="col-12 col-sm-12 col-lg-12">
-                  <h3 style="color:#7B7B7B"><a href='show_blog?id=<?php echo $blog->Id; ?>'><?php echo $blog->title; ?></a></h3>
-                  <p style="color:#7B7B7B">
-                    <?php
-                      echo CHsubstr($blog->content,0,300);
-                    ?>
-                  </p>                
-                </div><!--/span-->
-              </div>
-              <div style="background-color:#262626;" class="row">
-                <div class="col-5 col-sm-5 col-lg-9" >
-                  <p style="color:#7B7B7B">xxx 发布于<?php echo date("Y-m-d H:i:s",$blog->createdTime); ?></p>
-                </div><!--/span-->
-                                
-              </div><!--/row-->
-          <?php
-            }
-            
-          ?> 
+
           
         </div><!--/span-->
 
