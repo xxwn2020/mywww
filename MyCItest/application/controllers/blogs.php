@@ -19,7 +19,7 @@ class Blogs extends CI_Controller {
         $this->load->helper('form');//引入CI框架 form辅助函数
         $this->load->library('form_validation');
         $this->load->model('Blogs_model','blogs');
-        $this->output->enable_profiler(TRUE);
+        //$this->output->enable_profiler(TRUE);
     }
 
 	public function index()

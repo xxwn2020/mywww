@@ -13,7 +13,7 @@
 
     <!-- Bootstrap core CSS -->
     <link href="../../resources/css/bootstrap.min.css" rel="stylesheet">
-
+    <link href="../../resources/css/bootstrap-wysihtml5-0.0.2.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="../../resources/css/offcanvas.css" rel="stylesheet">
 
@@ -95,7 +95,9 @@
                 </div>
                 <div class="row" style="margin-bottom:15px">
                   <div class="col-10 col-sm-10 col-lg-8">
-                    <textarea  name="content" class="form-control" id="exampleInputPassword1" rows="15" placeholder="请输入内容"></textarea>
+                    <!--<textarea  name="content" class="form-control" id="exampleInputPassword1" rows="15" placeholder="请输入内容"></textarea>-->
+                    <textarea id="some-textarea"  placeholder="Enter text ..."></textarea>
+                      
                   </div>
                 </div>
                 <div class="row">
@@ -127,6 +129,14 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
     <script src="../../resources/js/bootstrap.min.js"></script>
+     <script src="../../resources/js/wysihtml5-0.3.0_rc2.js"></script>
+    <script src="../../resources/js/bootstrap-wysihtml5-0.0.2.js"></script>
+
+   
+       
     <script src="../../resources/js/offcanvas.js"></script>
+    <script type="text/javascript">
+      $('#some-textarea').wysihtml5();
+    </script>
   </body>
 </html>
