@@ -13,7 +13,7 @@
 
     <!-- Bootstrap core CSS -->
     <link href="../../resources/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../../resources/css/bootstrap-wysihtml5-0.0.2.css" rel="stylesheet">
+    <link href="../../resources/css/bootstrap3-wysihtml5.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="../../resources/css/offcanvas.css" rel="stylesheet">
 
@@ -83,6 +83,7 @@
                 <div class="row" style="margin-bottom:15px">
                   <div class="col-8 col-sm-8 col-lg-6">
                     <input name="title" type="text" class="form-control" id="exampleInputEmail1" placeholder="请输入标题">
+                    <?php echo form_error('title'); ?>
                   </div>
                 </div>
                 <div class="row">
@@ -94,15 +95,15 @@
                   </div>
                 </div>
                 <div class="row" style="margin-bottom:15px">
-                  <div class="col-10 col-sm-10 col-lg-8">
+                  <div class="col-11 col-sm-11 col-lg-9">
                     <!--<textarea  name="content" class="form-control" id="exampleInputPassword1" rows="15" placeholder="请输入内容"></textarea>-->
-                    <textarea id="some-textarea"  placeholder="Enter text ..."></textarea>
-                      
+                    <textarea id="some-textarea" name="content" class="form-control" rows="15" placeholder="Enter text ..."></textarea>
+                    <?php echo form_error('content'); ?>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-offset-9 col-sm-offset-9 col-lg-offset-7 col-1 col-sm-1 col-lg-1">             
-                    <button type="submit" class="btn btn-default">提交</button>
+                    <button type="submit" class="btn btn-default" onclick="submit_blog();">提交</button>
                   </div>
                 </div>
               </form>
@@ -127,16 +128,21 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
+    <script src="../../resources/js//jquery.min.js"></script>
     <script src="../../resources/js/bootstrap.min.js"></script>
-     <script src="../../resources/js/wysihtml5-0.3.0_rc2.js"></script>
-    <script src="../../resources/js/bootstrap-wysihtml5-0.0.2.js"></script>
+     <script src="../../resources/js/bootstrap3-wysihtml5.all.min.js"></script>
+    <script src="../../resources/js/bootstrap3-wysihtml5.min.js"></script>
 
    
        
     <script src="../../resources/js/offcanvas.js"></script>
     <script type="text/javascript">
       $('#some-textarea').wysihtml5();
+      function submit_blog()
+      {
+        alert($('#some-textarea').val());
+        $('#some-textarea').html($('#some-textarea').val());
+      }
     </script>
   </body>
 </html>

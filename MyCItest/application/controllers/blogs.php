@@ -33,7 +33,7 @@ class Blogs extends CI_Controller {
 	public function newblog()
 	{
 		$this->form_validation->set_rules('title', '标题', 'required|trim|strip_tags|max_length[100]|min_length[1]');
-		$this->form_validation->set_rules('content', '内容', 'required|trim|strip_tags|max_length[5000]|min_length[1]');
+		$this->form_validation->set_rules('content', '内容', 'required|trim|max_length[5000]|min_length[1]');
         if ($this->form_validation->run() == FALSE)
         {
             $this->load->view('newblog');
@@ -48,6 +48,7 @@ class Blogs extends CI_Controller {
                     'createdTime'   => time()
                     )
         		);
+			//echo $this->input->post('content',TRUE);
         	$this->load->view('welcome_message');
         }
 
@@ -63,6 +64,7 @@ class Blogs extends CI_Controller {
 
 	public function show_blog()
 	{
+		//$id=20;
 		$id=intval($this->input->get('id',TRUE));
 		$data['blog']=$this->blogs->get_blog_by_id($id);
 		$this->load->view('blog_info',$data);
