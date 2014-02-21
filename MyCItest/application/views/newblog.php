@@ -7,15 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
+    <link rel="shortcut icon" href="<?php echo base_url();?>favicon.ico">
 
     <title>AbZone</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="../../resources/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../../resources/css/bootstrap3-wysihtml5.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>css/bootstrap3-wysihtml5.css" rel="stylesheet">
     <!-- Custom styles for this template -->
-    <link href="../../resources/css/offcanvas.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>css/offcanvas.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy this line! -->
     <!--[if lt IE 9]><script src="../../docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -128,14 +128,14 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="../../resources/js//jquery.min.js"></script>
-    <script src="../../resources/js/bootstrap.min.js"></script>
-     <script src="../../resources/js/bootstrap3-wysihtml5.all.min.js"></script>
-    <script src="../../resources/js/bootstrap3-wysihtml5.min.js"></script>
+    <script src="<?php echo base_url();?>js//jquery.min.js"></script>
+    <script src="<?php echo base_url();?>js/bootstrap.min.js"></script>
+     <script src="<?php echo base_url();?>js/bootstrap3-wysihtml5.all.min.js"></script>
+    <script src="<?php echo base_url();?>js/bootstrap3-wysihtml5.min.js"></script>
 
    
        
-    <script src="../../resources/js/offcanvas.js"></script>
+    <script src="<?php echo base_url();?>js/offcanvas.js"></script>
     <script type="text/javascript">
       $('#some-textarea').wysihtml5();
       function submit_blog()

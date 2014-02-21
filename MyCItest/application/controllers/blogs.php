@@ -25,9 +25,10 @@ class Blogs extends CI_Controller {
 	public function index()
 	{
 		$this->load->helper('My_string_helper');
+		$data=$this->common->get_load();
 		$bloglists=$this->blogs->get_blogs(0,10);
-		$date['bloglists']=$bloglists;
-		$this->load->view('index',$date);
+		$data['bloglists']=$bloglists;
+		$this->load->view('index',$data);
 	}
 
 	public function newblog()
